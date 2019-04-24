@@ -12,12 +12,7 @@ export function getTopStories() {
             promises.push(getItem(id));
         });
 
-        return Promise.all(promises)
-            .then(stories => {
-                return stories.sort((a, b) => {
-                    return b.score - a.score;
-                });
-            });
+        return Promise.all(promises);
     });
 }
 
