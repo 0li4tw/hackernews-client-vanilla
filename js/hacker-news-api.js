@@ -8,11 +8,12 @@ export function getTopStories() {
     return httpGet(url).then(ids => {
         const promises = [];
 
-        ids.map(id => {
-            promises.push(getItem(id));
-        });
-
-        return Promise.all(promises);
+        return getItem(ids[0]);
+        // ids.map(id => {
+        //     promises.push(getItem(id));
+        // });
+        //
+        // return Promise.all(promises);
     });
 }
 
