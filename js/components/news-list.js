@@ -1,4 +1,5 @@
 import { getTopStories } from "../hacker-news-api";
+import * as moment from "moment";
 
 export class NewsList {
   constructor(elemId) {
@@ -9,9 +10,13 @@ export class NewsList {
 
   init() {
     getTopStories().then(stories => {
-      this.topStories = [stories]; //TODO: REMOVE ARRAY
+      this.topStories = stories;
       this.render();
     });
+  }
+
+  getDateForStory(story) {
+      return moment.unix(story.time).fromNow();
   }
 
   renderItems() {
@@ -19,10 +24,10 @@ export class NewsList {
 
     for (let story of this.topStories) {
       html += `
-            <li class="news-list__item">
-            <h3><a href="${story.url}" title="${story.title}">${story.title}</a></h3>
+            <li id="story-{$story.id}" class="news-list__item">
+            <h3><a href="#" class="news-list__link" title="${story.title}" data-id="${story.id}">${story.title}</a></h3>
                 <div class="news-list__item-details">
-                    ${story.score} points
+                    ${story.score} points | by ${story.by} | ${this.getDateForStory(story)} | ${story.descendants} comments
                 </div>
             </li>
             `;
