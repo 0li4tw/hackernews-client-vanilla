@@ -4,5 +4,17 @@
   "description": "A web client for the Hacker News API",
   "main": "index.js",
   "author": "Oliver Keighley",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack",
+    "watch": "webpack --watch --mode=development"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "prettier": "1.17.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
 }
